@@ -1,0 +1,47 @@
+from            : markdown+raw_tex
+to              : latex
+standalone      : true
+template        : "_lib/default.latex"
+file-scope      : true
+pdf-engine      : xelatex
+fail-if-warnings: false
+cite-method     : citeproc
+filters:
+  - pandoc-crossref
+  - citeproc
+metadata:
+  lang          : en-US
+number-sections: false
+variables:
+  documentclass : article
+  fontsize: 12pt
+  header-includes: |
+    \usepackage[p,osf]{ebgaramond}
+    \usepackage{academicons}
+    \usepackage{multicol}
+    \setlength{\columnsep}{15pt}
+    \usepackage{csquotes}
+    \usepackage[overload]{textcase}
+    \let\oldsc\textsc
+    \renewcommand{\textsc}[1]{\oldsc{\MakeLowercase{#1}}}
+
+    \usepackage{titling}
+    \pretitle{\begin{flushleft}\Huge}
+    \posttitle{\end{flushleft}\vspace{2em}}
+    \preauthor{\begin{flushleft}\Large}
+    \postauthor{\par\end{flushleft}}
+    \predate{\begin{flushleft}\large}
+    \postdate{\end{flushleft} \vfill}
+
+    \usepackage{titlesec,titletoc}
+    \titleformat{\section}[hang]{\normalfont\Large\itshape}{}{}{}[]
+    \titleformat{\subsection}[hang]{\normalfont\large\itshape}{}{1em}{}[]
+    \titleformat{\paragraph}[runin]{\normalfont\scshape}{}{0pt}{}[]
+
+    \usepackage{enumitem}
+    \setlist{font=\normalfont\scshape}
+
+    \usepackage{fancyhdr}
+  indent: true
+  papersize: a4
+  secnumdepth: 2
